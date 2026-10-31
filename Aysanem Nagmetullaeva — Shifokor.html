@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aysanem Nagmetullaeva — Shifokor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF6F4; --surface:#FFFFFF; --ink:#0B2B33; --muted:#4D6A70; --line:#CFE2DE;
+  --teal:#13806C; --teal-soft:#D8EFE9; --pulse:#E5484D;
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#071A1F;--surface:#0E2A31;--ink:#E7F4F1;--muted:#97B5B3;--line:#1D4048;--teal:#4FD1B5;--teal-soft:#123A3F;--pulse:#FF6B70}
+}
+:root[data-theme="dark"]{--bg:#071A1F;--surface:#0E2A31;--ink:#E7F4F1;--muted:#97B5B3;--line:#1D4048;--teal:#4FD1B5;--teal-soft:#123A3F;--pulse:#FF6B70}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:clamp(20px,5vw,56px) clamp(20px,5vw,40px) 40px}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:clamp(28px,6vw,64px)}
+.mono{width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:.02em}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.theme svg{width:20px;height:20px}
+
+/* hero */
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,10.5vw,104px);line-height:.95;letter-spacing:-.03em;margin:0 0 20px}
+.hero h1 span{display:block}
+.role{display:inline-flex;align-items:center;gap:10px;background:var(--teal-soft);color:var(--teal);font-weight:600;padding:8px 16px;border-radius:999px;font-size:16px}
+.role i{width:9px;height:9px;border-radius:50%;background:var(--teal);animation:beat 1.6s ease-in-out infinite}
+.lead{max-width:54ch;color:var(--muted);margin:22px 0 0;font-size:clamp(17px,2.4vw,20px)}
+
+/* ECG — the one memorable moment */
+.ecg{margin:clamp(28px,5vw,48px) 0 clamp(32px,6vw,56px);width:100%}
+.ecg svg{display:block;width:100%;height:auto;overflow:visible}
+.ecg .base{stroke:var(--line);stroke-width:2;fill:none}
+.ecg .live{stroke:var(--pulse);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s cubic-bezier(.6,.1,.3,1) .3s forwards}
+.ecg .dot{fill:var(--pulse);offset-path:path('M0 80 L180 80 L205 80 L225 40 L250 125 L275 12 L300 95 L318 80 L520 80 L545 80 L565 52 L585 105 L605 80 L1200 80');offset-distance:0%;animation:run 2.6s cubic-bezier(.6,.1,.3,1) .3s forwards;filter:drop-shadow(0 0 6px var(--pulse))}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes run{to{offset-distance:100%;opacity:0}}
+@keyframes beat{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.7);opacity:.4}}
+
+/* hero entrance (single orchestrated sequence) */
+.in{opacity:0;transform:translateY(14px);animation:up .8s cubic-bezier(.2,.7,.2,1) forwards}
+.in.d1{animation-delay:.05s}.in.d2{animation-delay:.2s}.in.d3{animation-delay:.35s}.in.d4{animation-delay:.5s}
+@keyframes up{to{opacity:1;transform:none}}
+
+/* skills */
+h2{font-family:var(--display);font-size:clamp(26px,4.5vw,34px);letter-spacing:-.02em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 22px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:clamp(36px,6vw,64px)}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 20px 18px;transition:transform .25s ease,border-color .25s ease}
+.skill:hover{transform:translateY(-4px);border-color:var(--teal)}
+.skill svg{width:30px;height:30px;stroke:var(--teal);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
+.skill b{display:block;font-family:var(--display);font-size:19px;margin-bottom:4px}
+.skill p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+
+/* contacts */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.link{display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease;min-height:76px}
+.link .ic{flex:none;width:48px;height:48px;border-radius:14px;background:var(--teal-soft);display:grid;place-items:center;transition:background .25s ease}
+.link svg{width:24px;height:24px;fill:var(--teal);transition:fill .25s ease}
+.link small{display:block;color:var(--muted);font-size:13px;line-height:1.2;transition:color .25s ease}
+.link strong{display:block;font-weight:600;font-size:16px;word-break:break-all;line-height:1.3}
+.link:hover,.link:focus-visible{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:translateY(-4px)}
+.link:hover small,.link:focus-visible small{color:var(--bg);opacity:.75}
+.link:hover .ic,.link:focus-visible .ic{background:var(--teal)}
+.link:hover svg,.link:focus-visible svg{fill:#fff}
+a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.copy{margin-top:14px;background:none;border:0;color:var(--teal);font:600 15px var(--body);cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:4px}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:999px;font-size:15px;opacity:0;pointer-events:none;transition:.3s ease}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .in{opacity:1;transform:none}.ecg .live{stroke-dashoffset:0}.ecg .dot{display:none}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top in d1">
+    <div class="mono" aria-hidden="true">AN</div>
+    <button class="theme" id="theme" aria-label="Rangni almashtirish">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+
+  <header class="hero">
+    <h1 class="in d2"><span>Aysanem</span><span>Nagmetullaeva</span></h1>
+    <div class="in d3"><span class="role"><i></i>Shifokor</span></div>
+    <p class="lead in d4">Bemor salomatligini birinchi oʻringa qoʻyaman: aniq tashxis, tushunarli maslahat va ishonchli muloqot.</p>
+  </header>
+
+  <div class="ecg" aria-hidden="true">
+    <svg viewBox="0 0 1200 160" preserveAspectRatio="none">
+      <path class="base" d="M0 80 L180 80 L205 80 L225 40 L250 125 L275 12 L300 95 L318 80 L520 80 L545 80 L565 52 L585 105 L605 80 L1200 80"/>
+      <path class="live" pathLength="1" d="M0 80 L180 80 L205 80 L225 40 L250 125 L275 12 L300 95 L318 80 L520 80 L545 80 L565 52 L585 105 L605 80 L1200 80"/>
+      <circle class="dot" r="6"/>
+    </svg>
+  </div>
+
+  <section>
+    <h2>Koʻnikmalar</h2>
+    <p class="sub">Kundalik amaliyotimda tayanadigan yoʻnalishlar.</p>
+    <div class="skills">
+      <div class="skill">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6M11 8v6"/></svg>
+        <b>Diagnostika</b><p>Shikoyatlar va tekshiruv natijalarini bir butun qilib tahlil qilish.</p>
+      </div>
+      <div class="skill">
+        <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <b>Davolash</b><p>Dalillarga asoslangan, har bir bemorga mos davolash rejasi.</p>
+      </div>
+      <div class="skill">
+        <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <b>Profilaktika</b><p>Kasallikning oldini olish va sogʻlom turmush boʻyicha tavsiyalar.</p>
+      </div>
+      <div class="skill">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+        <b>Bemor bilan muloqot</b><p>Murakkab tibbiy tushunchalarni oddiy tilda tushuntirish.</p>
+      </div>
+      <div class="skill">
+        <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+        <b>Shoshilinch yordam</b><p>Tez qaror qabul qilish va birinchi tibbiy yordam koʻrsatish.</p>
+      </div>
+      <div class="skill">
+        <svg viewBox="0 0 24 24"><path d="M2 8l10-5 10 5-10 5z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
+        <b>Doimiy oʻrganish</b><p>Yangi tibbiy bilim va usullarni muntazam oʻzlashtirish.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Bogʻlanish</h2>
+    <p class="sub">Savol yoki qabulga yozilish uchun yozing.</p>
+    <div class="links">
+      <a class="link" href="https://t.me/Nagmetullaeva" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M21.9 4.3c.3-1.2-.9-1.7-1.9-1.3L2.8 9.7c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 1.7 5.2c.2.6.1.8.7.8.5 0 .7-.2 1-.5l2.1-2 4.4 3.2c.8.4 1.4.2 1.6-.7zM8.5 12.8l9.6-6c.5-.3.9-.1.6.2l-7.800 7.100-.3 3.300z"/></svg></span>
+        <span><small>Telegram</small><strong>@Nagmetullaeva</strong></span>
+      </a>
+      <a class="link" href="https://instagram.com/nagmetullaeva_.a" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.500 5.500 0 0 1 22 7.500v9a5.500 5.500 0 0 1-5.500 5.500h-9A5.500 5.500 0 0 1 2 16.500v-9A5.500 5.500 0 0 1 7.500 2zm0 2A3.500 3.500 0 0 0 4 7.500v9A3.500 3.500 0 0 0 7.500 20h9a3.500 3.500 0 0 0 3.500-3.500v-9A3.500 3.500 0 0 0 16.500 4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.200-3.200a1.200 1.200 0 1 1 0 2.400 1.200 1.200 0 0 1 0-2.400z"/></svg></span>
+        <span><small>Instagram</small><strong>@nagmetullaeva_.a</strong></span>
+      </a>
+      <a class="link" href="mailto:aysanemnagmetullaeva09@gmail.com">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.5l8 5.200 8-5.200V6zm16 12V8.900l-8 5.200-8-5.200V18z"/></svg></span>
+        <span><small>Pochta</small><strong>aysanemnagmetullaeva09@gmail.com</strong></span>
+      </a>
+    </div>
+    <button class="copy" id="copy">Pochta manzilini nusxalash</button>
+  </section>
+
+  <footer>© Aysanem Nagmetullaeva</footer>
+</main>
+<div class="toast" id="toast" role="status">Nusxalandi</div>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme',dark?'light':'dark');
+  });
+  var toast=document.getElementById('toast');
+  document.getElementById('copy').addEventListener('click',function(){
+    var t='aysanemnagmetullaeva09@gmail.com';
+    function ok(){toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},1800)}
+    try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}
+    function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();ok()}
+  });
+})();
+</script>
+</body>
+</html>
